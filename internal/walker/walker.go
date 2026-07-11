@@ -45,7 +45,7 @@ func Walk(root string, opt Options) ([]Entry, error) {
 		_ = baseIgnores.LoadGitignore(filepath.Join(root, ".gitignore"))
 	}
 
-	numWorkers := min(runtime.NumCPU(), 1)
+	numWorkers := max(runtime.NumCPU(), 1)
 
 	jobs := make(chan job, 1024)
 
